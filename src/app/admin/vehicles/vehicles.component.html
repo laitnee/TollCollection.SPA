@@ -1,0 +1,45 @@
+<button mat-raised-button color="primary" style="margin:1em; text-align:center;" (click)="openDialog()"> Add Vehicle </button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="option">
+      <th mat-header-cell *matHeaderCellDef>
+        Option
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-stroked-button color="warn" (click)="deleteVehicle(row)"> delete
+        </button>
+      </td>
+    </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="VehicleId">
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let element"> {{element.vehicleId}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="PlateNumber">
+    <th mat-header-cell *matHeaderCellDef> Plate Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.plateNumber}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="TagNumber">
+    <th mat-header-cell *matHeaderCellDef> Tag Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.tagNumber}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="VehicleName">
+    <th mat-header-cell *matHeaderCellDef> Vehicle Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.vehicleName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="VehicleType">
+    <th mat-header-cell *matHeaderCellDef> Vehicle Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.vehicleType}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

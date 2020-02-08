@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Add Vehicle</h1>
+<div mat-dialog-content>
+<form #vehForm="ngForm" id="vehForm" (ngSubmit)="addVehicle()">
+  <p>Vehicle Name</p>
+  <mat-form-field>
+    <input required matInput name="VehicleName" [(ngModel)]="vehicle.VehicleName" >
+  </mat-form-field>
+  <p>Tag Number</p>
+  <mat-form-field>
+    <input required  matInput name="TagNumber" [(ngModel)]="vehicle.TagNumber" >
+  </mat-form-field>
+  <p>Vehicle Owner Id</p>
+  <mat-form-field>
+    <input required matInput name="VehicleOwnerId" [(ngModel)]="vehicle.VehicleOwnerId" >
+  </mat-form-field>
+  <p>Plate Number</p>
+  <mat-form-field>
+    <input required matInput name="PlateNumber" [(ngModel)]="vehicle.PlateNumber" >
+  </mat-form-field>
+
+  <p>Vehicle type</p>
+  <mat-form-field>
+    <input required matInput name="VehicleType" [(ngModel)]="vehicle.VehicleType" >
+  </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" form='vehForm' [disabled]='!vehForm.valid' >Add</button>
+</div>

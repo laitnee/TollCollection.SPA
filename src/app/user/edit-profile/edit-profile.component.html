@@ -1,0 +1,44 @@
+
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="400px">
+    <mat-card-header>
+      <mat-card-title><div class="mat-headline"> Update Profile </div></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="profileUpdateForm" (ngSubmit)="updateProfile()" fxLayout="column">
+
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-form-field fxFlex>
+            <input matInput placeholder="First name" aria-label="firstname" formControlName="firstName">
+            <mat-error *ngIf="profileUpdateForm.get('firstName').hasError('required')"> firstname is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-form-field fxFlex>
+            <input matInput placeholder="last name" aria-label="last name" formControlName="lastName">
+            <mat-error *ngIf="profileUpdateForm.get('lastName').hasError('required')"> last Name is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-form-field fxFlex>
+            <input matInput placeholder="NIN" aria-label="NIN" formControlName="NIN">
+            <mat-error *ngIf="profileUpdateForm.get('NIN').hasError('required')"> NIN is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-form-field fxFlex>
+            <input matInput placeholder="Phone number" type="number" aria-label="phone number" formControlName="phoneNumber">
+            <mat-error *ngIf="profileUpdateForm.get('phoneNumber').hasError('required')"> Phone number is required </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" class="margin-top">
+          <div *ngIf="formError" class="mat-caption error">{{formError}} </div>
+          <div class="flex-spacer"></div>
+          <button mat-raised-button type="submit" color="primary" [disabled]="!profileUpdateForm.valid">Save</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

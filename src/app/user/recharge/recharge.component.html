@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="400px">
+    <mat-card-header>
+      <mat-card-title><div class="mat-headline">
+        Recharge </div></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="rechargeForm" (ngSubmit)="recharge()" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <span>&#x20A6;</span>
+          <mat-form-field fxFlex>
+            <input type="number" matInput placeholder="amount" aria-label="amount" formControlName="amount">
+            <mat-error *ngIf="rechargeForm.get('amount').hasError('required')"> Username is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="margin-top">
+          <div *ngIf="rechargeError" class="mat-caption error">{{rechargeError}} </div>
+          <div class="flex-spacer"></div>
+          <button mat-raised-button type="submit" color="primary" [disabled]="rechargeForm.invalid">Pay</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

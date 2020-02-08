@@ -1,0 +1,56 @@
+<div  style="margin-right:1em; font-size: xx-large; font-weight: 700;">
+  {{(currentUser?.firstName || ' ') + ' ' + (currentUser?.lastName || ' ')}}
+</div >
+<div style="margin-right:1em; font-size:larger; font-weight: 500;">
+  ID: {{currentUser?.id || ''}}
+</div>
+<div style=" margin-right:1em; font-size:larger; font-weight: 500;">
+  Phone Number: {{'+234' + (currentUser?.phoneNumber || '')}}
+</div>
+<div style=" margin-right:1em; font-size:larger; font-weight: 500;">
+  Role: Administrator
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="10px">
+  <div fxFlex="30" class="side-nav">
+    <div fxLayout="column" fxLayoutAlign="space-around " fxLayoutGap="20px">
+      <div>
+        <button style="font-size:1.2em; min-width:100%; height:auto; padding:1.2em;" mat-raised-button color="primary" (click)="dashboardAction = 'vehicleAction'"> Manage Vehicles </button>
+      </div>
+      <div>
+        <button style="font-size:1.2em; min-width:100%; height:auto; padding:1.2em;" mat-raised-button color="accent" (click) = "dashboardAction = 'plazaAction'"> Manage plazas </button>
+      </div>
+      <div>
+        <button style=" font-size:1.2em; min-width:100%; height:auto; padding:1.2em;" mat-raised-button color="warn" (click) = "dashboardAction = ''">  view log </button>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="70">
+    <span [ngSwitch]="dashboardAction">
+      <p *ngSwitchCase="'vehicleAction'">
+        <app-vehicles></app-vehicles>
+      </p>
+      <p *ngSwitchCase="'plazaAction'">
+        <app-plaza></app-plaza>
+      </p>
+      <p *ngSwitchDefault>
+        <app-log></app-log>
+      </p>
+      </span>
+  </div>
+</div>
+<mat-card >
+  <mat-card-header fxLayout="column" fxLayoutAlign="center center"  >
+    <mat-card-title ><div class="mat-headline" > Make User Admin </div></mat-card-title>
+  </mat-card-header>
+  <mat-card-content  >
+    <form fxLayout="column" fxLayoutAlign="center center" #editForm="ngForm" id="editForm" (ngSubmit)="makeAdmin()">
+      <p>User Id</p>
+      <mat-form-field>
+        <input required type="number" matInput name="userToAdminId" [(ngModel)]="userToAdminId" >
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="warn" form='editForm' [disabled]='!editForm.valid'> Make Admin </button>
+      </form>
+  </mat-card-content>
+</mat-card>
